@@ -17,7 +17,9 @@ const rockPaperScissors = (hand1, hand2) => {
   hand2 = hand2.toLowerCase().trim();
   // Write code here
   // Use the unit test to see what is expected
-
+  if (!hand1 || !hand2) {
+    return "Enter valid input"
+  }
   if (hand1 === "rock" && hand2 === "scissors") {
     return "Hand one wins!";
   } else if (hand1 === "paper" && hand2 === "rock") {
@@ -65,10 +67,12 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
     });
+    it('should detect a valid input', () => {
+      assert.equal(rockPaperScissors(' ', 'paper'), "Enter valid input");
+    });
   });
 } else {
 
   // always returns ask the user for another input
   getPrompt();
-
 }
